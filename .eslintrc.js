@@ -33,7 +33,10 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'class-methods-use-this': 'off',
     'prefer-destructuring': ['error', { object: true, array: false }],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/*.ts', '**/*.tsx'], projectDependencies: false },
+    ],
     'no-unused-vars': ['error', { argsIgnorePattern: 'req|res|next|val' }],
   },
 };
