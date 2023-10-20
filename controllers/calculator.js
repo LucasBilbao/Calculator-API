@@ -8,18 +8,16 @@ function getErrorResponse(error) {
 function getResponse(result) {
   return {
     status: 'success',
-    data: {
-      result,
-    },
+    result,
   };
 }
 
 exports.add = (req, res) => {
   try {
     const { num1, num2 } = req.body;
-    const sum = num1 + num2;
+    const computation = num1 + num2;
 
-    res.status(200).json(getResponse(sum));
+    res.status(200).json(getResponse(computation));
   } catch (err) {
     res.status(410).json(getErrorResponse(err));
   }
@@ -28,9 +26,9 @@ exports.add = (req, res) => {
 exports.subtract = (req, res) => {
   try {
     const { num1, num2 } = req.body;
-    const difference = num1 - num2;
+    const computation = num1 - num2;
 
-    res.status(200).json(getResponse(difference));
+    res.status(200).json(getResponse(computation));
   } catch (err) {
     res.status(400).json(getErrorResponse(err));
   }
@@ -39,9 +37,9 @@ exports.subtract = (req, res) => {
 exports.multiply = (req, res) => {
   try {
     const { num1, num2 } = req.body;
-    const product = num1 * num2;
+    const computation = num1 * num2;
 
-    res.status(200).json(getResponse(product));
+    res.status(200).json(getResponse(computation));
   } catch (err) {
     res.status(400).json(getErrorResponse(err));
   }
@@ -54,9 +52,36 @@ exports.divide = (req, res) => {
       throw new Error('Division by 0 is not allowed');
     }
 
-    const quotient = num1 / num2;
+    const computation = num1 / num2;
 
-    res.status(200).json(getResponse(quotient));
+    res.status(200).json(getResponse(computation));
+  } catch (err) {
+    res.status(400).json(getErrorResponse(err));
+  }
+};
+
+exports.power = (req, res) => {
+  try {
+    const { num, power } = req.body;
+
+    const computation = num ** power;
+
+    res.status(200).json(getResponse(computation));
+  } catch (err) {
+    res.status(400).json(getErrorResponse(err));
+  }
+};
+
+exports.sqrRoot = (req, res) => {
+  try {
+    const { num } = req.body;
+    if (num < 0) {
+      throw new Error('Number must be greater than or equal to 0');
+    }
+
+    const computation = num ** (1 / 2);
+
+    res.status(200).json(getResponse(computation));
   } catch (err) {
     res.status(400).json(getErrorResponse(err));
   }
