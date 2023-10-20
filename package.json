@@ -2,9 +2,9 @@
   "name": "calculator-api",
   "version": "1.0.0",
   "description": "A calculator API for TSU.",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "npm run start:dev",
+    "start": "node server.js",
     "start:dev": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production& nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
