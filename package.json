@@ -4,9 +4,9 @@
   "description": "A calculator API for TSU.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "npm run start:dev",
     "start:dev": "nodemon server.js",
-    "start:prod": "SET NODE_ENV=production& node server.js",
+    "start:prod": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Luka Bilbao-Munios",
@@ -16,7 +16,8 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "soap": "^0.19.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.11",

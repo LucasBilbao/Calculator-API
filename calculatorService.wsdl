@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="CalculatorService"
+   	targetNamespace="http://tempuri.org/"
+		xmlns:s="http://www.w3.org/2001/XMLSchema"
+		xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+		xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+		xmlns:tns="http://tempuri.org/"
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+		xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   >
+	 <!-- TYPES -->
+	<wsdl:types>
+		<s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+			<s:element name="AddRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="a" type="s:float"/>
+						<s:element name="b" type="s:float"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="status" type="s:string"/>
+						<s:element name="result" type="s:float"/>
+						<s:element name="errorMessage" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SubtractRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="a" type="s:float"/>
+						<s:element name="b" type="s:float"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SubtractResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="status" type="s:string"/>
+						<s:element name="result" type="s:float"/>
+						<s:element name="errorMessage" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="MultiplyRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="a" type="s:float"/>
+						<s:element name="b" type="s:float"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="MultiplyResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="status" type="s:string"/>
+						<s:element name="result" type="s:float"/>
+						<s:element name="errorMessage" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DivideRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="a" type="s:float"/>
+						<s:element name="b" type="s:float"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DivideResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="status" type="s:string"/>
+						<s:element name="result" type="s:float"/>
+						<s:element name="errorMessage" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="PowerRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="num" type="s:float"/>
+						<s:element name="power" type="s:float"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="PowerResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="status" type="s:string"/>
+						<s:element name="result" type="s:float"/>
+						<s:element name="errorMessage" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SqrRootRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="num" type="s:float"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SqrRootResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="status" type="s:string"/>
+						<s:element name="result" type="s:float"/>
+						<s:element name="errorMessage" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+		</s:schema>
+	</wsdl:types>
+
+	<!-- MESSAGES -->
+	<wsdl:message name="AddRequestMessage">
+    <wsdl:part name="request" element="tns:AddRequest"/>
+  </wsdl:message>
+	<wsdl:message name="AddResponseMessage">
+    <wsdl:part name="response" element="tns:AddResponse"/>
+  </wsdl:message>
+	<wsdl:message name="SubtractRequestMessage">
+    <wsdl:part name="request" element="tns:SubtractRequest"/>
+  </wsdl:message>
+	<wsdl:message name="SubtractResponseMessage">
+    <wsdl:part name="response" element="tns:SubtractResponse"/>
+  </wsdl:message>
+	<wsdl:message name="MultiplyRequestMessage">
+    <wsdl:part name="request" element="tns:MultiplyRequest"/>
+  </wsdl:message>
+	<wsdl:message name="MultiplyResponseMessage">
+    <wsdl:part name="response" element="tns:MultiplyResponse"/>
+  </wsdl:message>
+	<wsdl:message name="DivideRequestMessage">
+    <wsdl:part name="request" element="tns:DivideRequest"/>
+  </wsdl:message>
+	<wsdl:message name="DivideResponseMessage">
+    <wsdl:part name="response" element="tns:DivideResponse"/>
+  </wsdl:message>
+	<wsdl:message name="PowerRequestMessage">
+    <wsdl:part name="request" element="tns:PowerRequest"/>
+  </wsdl:message>
+	<wsdl:message name="PowerResponseMessage">
+    <wsdl:part name="response" element="tns:PowerResponse"/>
+  </wsdl:message>
+	<wsdl:message name="SqrRootRequestMessage">
+    <wsdl:part name="request" element="tns:SqrRootRequest"/>
+  </wsdl:message>
+	<wsdl:message name="SqrRootResponseMessage">
+    <wsdl:part name="response" element="tns:SqrRootResponse"/>
+  </wsdl:message>
+
+	<!-- PORT TYPES -->
+	<wsdl:portType name="CalculatorPort">
+    <wsdl:operation name="Add">
+      <wsdl:input message="tns:AddRequestMessage"/>
+      <wsdl:output message="tns:AddResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <wsdl:input message="tns:SubtractRequestMessage"/>
+      <wsdl:output message="tns:SubtractResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Multiply">
+      <wsdl:input message="tns:MultiplyRequestMessage"/>
+      <wsdl:output message="tns:MultiplyResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Divide">
+      <wsdl:input message="tns:DivideRequestMessage"/>
+      <wsdl:output message="tns:DivideResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Power">
+      <wsdl:input message="tns:PowerRequestMessage"/>
+      <wsdl:output message="tns:PowerResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="SqrRoot">
+      <wsdl:input message="tns:SqrRootRequestMessage"/>
+      <wsdl:output message="tns:SqrRootResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+	<!-- BINDING -->
+	 <wsdl:binding name="CalculatorBinding" type="tns:CalculatorPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="Add" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <soap:operation soapAction="Subtract" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Multiply">
+      <soap:operation soapAction="Multiply" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Divide">
+      <soap:operation soapAction="Divide" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Power">
+      <soap:operation soapAction="Power" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SqrRoot">
+      <soap:operation soapAction="SqrRoot" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+	<!-- SERVICE -->
+	<wsdl:service name="CalculatorService">
+    <wsdl:port name="CalculatorServicePort" binding="tns:CalculatorBinding">
+      <soap:address location="http://localhost:8000/soap_api/v1/calculator"/>
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>

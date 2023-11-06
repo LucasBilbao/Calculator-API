@@ -1,7 +1,7 @@
 function getErrorResponse(error) {
   return {
     status: 'fail',
-    message: error.message,
+    errorMessage: error.message,
   };
 }
 
@@ -12,77 +12,107 @@ function getResponse(result) {
   };
 }
 
-exports.add = (req, res) => {
+exports.Add = (args) => {
   try {
-    const { num1, num2 } = req.body;
-    const computation = num1 + num2;
+    let { a, b } = args;
+    a = Number.parseFloat(a);
+    b = Number.parseFloat(b);
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+      throw new Error('a and b must be numbers or numeric strings');
+    }
 
-    res.status(200).json(getResponse(computation));
+    const computation = a + b;
+
+    return getResponse(computation);
   } catch (err) {
-    res.status(410).json(getErrorResponse(err));
+    return getErrorResponse(err);
   }
 };
 
-exports.subtract = (req, res) => {
+exports.Subtract = (args) => {
   try {
-    const { num1, num2 } = req.body;
-    const computation = num1 - num2;
+    let { a, b } = args;
+    a = Number.parseFloat(a);
+    b = Number.parseFloat(b);
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+      throw new Error('a and b must be numbers or numeric strings');
+    }
 
-    res.status(200).json(getResponse(computation));
+    const computation = a - b;
+
+    return getResponse(computation);
   } catch (err) {
-    res.status(400).json(getErrorResponse(err));
+    return getErrorResponse(err);
   }
 };
 
-exports.multiply = (req, res) => {
+exports.Multiply = (args) => {
   try {
-    const { num1, num2 } = req.body;
-    const computation = num1 * num2;
+    let { a, b } = args;
+    a = Number.parseFloat(a);
+    b = Number.parseFloat(b);
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+      throw new Error('a and b must be numbers or numeric strings');
+    }
 
-    res.status(200).json(getResponse(computation));
+    const computation = a * b;
+
+    return getResponse(computation);
   } catch (err) {
-    res.status(400).json(getErrorResponse(err));
+    return getErrorResponse(err);
   }
 };
 
-exports.divide = (req, res) => {
+exports.Divide = (args) => {
   try {
-    const { num1, num2 } = req.body;
-    if (num2 === 0) {
+    let { a, b } = args;
+    a = Number.parseFloat(a);
+    b = Number.parseFloat(b);
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+      throw new Error('a and b must be numbers or numeric strings');
+    }
+    if (b === 0) {
       throw new Error('Division by 0 is not allowed');
     }
 
-    const computation = num1 / num2;
+    const computation = a / b;
 
-    res.status(200).json(getResponse(computation));
+    return getResponse(computation);
   } catch (err) {
-    res.status(400).json(getErrorResponse(err));
+    return getErrorResponse(err);
   }
 };
 
-exports.power = (req, res) => {
+exports.Power = (args) => {
   try {
-    const { num, power } = req.body;
-
+    let { num, power } = args;
+    num = Number.parseFloat(num);
+    power = Number.parseFloat(power);
+    if (Number.isNaN(num) || Number.isNaN(power)) {
+      throw new Error('num and power must be numbers or numeric strings');
+    }
     const computation = num ** power;
 
-    res.status(200).json(getResponse(computation));
+    return getResponse(computation);
   } catch (err) {
-    res.status(400).json(getErrorResponse(err));
+    return getErrorResponse(err);
   }
 };
 
-exports.sqrRoot = (req, res) => {
+exports.SqrRoot = (args) => {
   try {
-    const { num } = req.body;
+    let { num } = args;
+    num = Number.parseFloat(num);
+    if (Number.isNaN(num)) {
+      throw new Error('num must be a number or numeric string');
+    }
     if (num < 0) {
       throw new Error('Number must be greater than or equal to 0');
     }
-
     const computation = num ** (1 / 2);
 
-    res.status(200).json(getResponse(computation));
+    return getResponse(computation);
   } catch (err) {
-    res.status(400).json(getErrorResponse(err));
+    return getErrorResponse(err);
   }
 };
